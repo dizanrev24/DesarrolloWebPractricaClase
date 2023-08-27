@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ejercicio</title>
+
+    <script>
+    function agregarElemento() {
+    var titulo = document.getElementById("titulo").value;
+    var comentario = document.getElementById("comentario").value;
+    var tabla = document.getElementById("Tabla");
+    
+    var tr_tabla = document.createElement("tr");
+    tr_tabla.innerHTML = `
+        <td>${new Date().toLocaleString()}</td>    
+        <td>${titulo}</td>
+        <td>${comentario}</td>
+        <td><button onclick="eliminarElemento(this)">Eliminar</button></td>
+    `;
+    
+    tabla.appendChild(tr_tabla);
+}
+
+function eliminarElemento(boton) {
+    var fila = boton.parentNode.parentNode;
+    fila.parentNode.removeChild(fila);
+}
+    </script>
+
+</head>
+<body>
+    <h2>UNIVERSIDAD MARIANO GALVEZ | RETO DE CLASE</h2>
+    
+    <div class="container">
+        <h2>Tweet</h2>
+        <p>¿Que estás pensando?</p>
+        <input type="text" id="titulo" placeholder="Titulo">
+    <br><br><br><br>
+    <input type="text" id="comentario" placeholder="Comentarios">
+    <input type="button" value="Agregar" onclick="agregarElemento()">
+    <br><br><br><br><br>
+
+        <table class="vista" border="1" id="Tabla">
+            <tr>
+                <th id="hora">Hora</th>
+                <th id="titulo">Titulo</th>
+                <th id="comentario">Comentario</th>
+                <th id="Accion">Acción</th>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
